@@ -93,29 +93,29 @@ class PartPicker:
 
 
 cpus = [
-    CPU('Intel', 'Core i9-11900K', 399, 8, 16, 3.5, 5.3),
-    CPU('AMD', 'Ryzen 9 5950X', 299, 16, 32, 3.4, 4.9),
-    CPU('Intel', 'Core i7-11700K', 239, 8, 16, 3.6, 5.0),
-    CPU('AMD', 'Ryzen 7 5800X', 200, 8, 16, 3.8, 4.7),
-    CPU('Intel', 'Core i5-11600K', 209, 6, 12, 3.9, 4.9),
+    CPU("Intel", "Core i9-11900K", 399, 8, 16, 3.5, 5.3),
+    CPU("AMD", "Ryzen 9 5950X", 299, 16, 32, 3.4, 4.9),
+    CPU("Intel", "Core i7-11700K", 239, 8, 16, 3.6, 5.0),
+    CPU("AMD", "Ryzen 7 5800X", 200, 8, 16, 3.8, 4.7),
+    CPU("Intel", "Core i5-11600K", 209, 6, 12, 3.9, 4.9),
 ]
 
 
 part_picker = PartPicker(cpus)
 print("\nIntel CPUs\n")
-intel_processors = part_picker.get_processors_by_brand('Intel')
+intel_processors = part_picker.get_processors_by_brand("Intel")
 for cpu in intel_processors:
     print(f"{cpu.get_brand()} {cpu.get_model()} - Price: {cpu.get_price()}€")
 
 print("\nAMD CPUs\n")
-amd_processors = part_picker.get_processors_by_brand('AMD')
+amd_processors = part_picker.get_processors_by_brand("AMD")
 for cpu in amd_processors:
     print(f"{cpu.get_brand()} {cpu.get_model()} - Price: {cpu.get_price()}€")
 
 print("\nCPUs by core count\n")
 cpus_with_cores = part_picker.get_cpus_by_cores(8)
 for cpu in cpus_with_cores:
-    print(f"{cpu.get_brand()} {cpu.get_model()} - Price: ${cpu.get_price()} - Cores: {cpu.get_core_count()}")
+    print(f"{cpu.get_brand()} {cpu.get_model()} - Price: {cpu.get_price()}€ - Cores: {cpu.get_core_count()}")
 
 print("\nCPUs by price[lower or equal]\n")
 cpus_by_price = part_picker.get_cpus_by_price(250)
