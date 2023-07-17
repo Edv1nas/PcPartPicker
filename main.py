@@ -1,5 +1,5 @@
 from typing import List
-from utilities.database import cpus_info
+from utilities.database import cpus_list
 from utilities.pc_parts import CPU
 
 
@@ -29,7 +29,7 @@ class PartPicker:
         return processors_list
 
 
-part_picker = PartPicker(cpus_info)
+part_picker = PartPicker(cpus_list)
 print("\nIntel CPUs\n")
 intel_processors = part_picker.get_processors_by_brand("Intel")
 for cpu in intel_processors:

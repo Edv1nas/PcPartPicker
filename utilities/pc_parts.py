@@ -36,11 +36,25 @@ class CPU(PCParts):
 
 
 class CPUColler(PCParts):
-    pass
+    def __init__(self, brand: str, model: str, price: float, fan_rpm: int, noise_level: float):
+        super().__init__(brand, model, price)
+        self.fan_rpm = fan_rpm
+        self.noise_level = noise_level
+
+    def get_fan_rpm(self):
+        return self.fan_rpm
+
+    def get_noise_level(self):
+        return self.noise_level
 
 
 class Motherboard(PCParts):
-    pass
+    def __init__(self, brand: str, model: str, price: float, socket: str, form_factor: str, memory_max: int, memory_slots: int):
+        super().__init__(brand, model, price)
+        self.socket = socket
+        self.form_factor = form_factor
+        self.memory_max = memory_max
+        self.memory_slots = memory_slots
 
 
 class Memory(PCParts):
