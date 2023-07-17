@@ -1,69 +1,6 @@
 from typing import List
-
-
-class PCParts:
-    def __init__(self, brand: str, model: str, price: float):
-        self._brand = brand
-        self._model = model
-        self._price = price
-
-    def get_brand(self) -> str:
-        return self._brand
-
-    def get_model(self) -> str:
-        return self._model
-
-    def get_price(self) -> float:
-        return self._price
-
-
-class CPU(PCParts):
-    def __init__(self, brand: str, model: str, price: float, core_count: int, threads: int, base_clock: float, max_boost_clock: float):
-        super().__init__(brand, model, price)
-        self._core_count = core_count
-        self._threads = threads
-        self._base_clock = base_clock
-        self._max_boost_clock = max_boost_clock
-
-    def get_core_count(self) -> int:
-        return self._core_count
-
-    def get_threads(self) -> int:
-        return self._threads
-
-    def get_base_clock(self) -> float:
-        return self._base_clock
-
-    def get_max_boost_clock(self) -> float:
-        return self._max_boost_clock
-
-
-class CPUColler(PCParts):
-    pass
-
-
-class Motherboard(PCParts):
-    pass
-
-
-class Memory(PCParts):
-    pass
-
-
-class Storage(PCParts):
-    pass
-
-
-class VideoCard(PCParts):
-    pass
-
-
-class Case(PCParts):
-    pass
-
-
-class PowerSupply(PCParts):
-    pass
+from utilities.database import cpus_info
+from utilities.pc_parts import CPU
 
 
 class PartPicker:
@@ -92,16 +29,7 @@ class PartPicker:
         return processors_list
 
 
-cpus = [
-    CPU("Intel", "Core i9-11900K", 399, 8, 16, 3.5, 5.3),
-    CPU("AMD", "Ryzen 9 5950X", 299, 16, 32, 3.4, 4.9),
-    CPU("Intel", "Core i7-11700K", 239, 8, 16, 3.6, 5.0),
-    CPU("AMD", "Ryzen 7 5800X", 200, 8, 16, 3.8, 4.7),
-    CPU("Intel", "Core i5-11600K", 209, 6, 12, 3.9, 4.9),
-]
-
-
-part_picker = PartPicker(cpus)
+part_picker = PartPicker(cpus_info)
 print("\nIntel CPUs\n")
 intel_processors = part_picker.get_processors_by_brand("Intel")
 for cpu in intel_processors:
