@@ -2,44 +2,44 @@ from utilities.pc_parts import CPU, CPUColler, Motherboard, Memory, Storage, Vid
 
 
 cpus_list = [
-    CPU("Intel", "Core i9-11900K", 399, 8, 16, 3.5, 5.3),
-    CPU("AMD", "Ryzen 9 5950X", 299, 16, 32, 3.4, 4.9),
-    CPU("Intel", "Core i7-11700K", 239, 8, 16, 3.6, 5.0),
-    CPU("AMD", "Ryzen 7 5800X", 200, 8, 16, 3.8, 4.7),
-    CPU("Intel", "Core i5-11600K", 209, 6, 12, 3.9, 4.9),
-    CPU("AMD", "Ryzen 7 7800X3D", 441, 8, 16, 4.2, 5),
-    CPU("Intel", "Core i9-13900K", 409.99, 24, 48, 3, 5.8),
-    CPU("AMD", "Ryzen 5 7600X", 199.99, 6, 12, 4.7, 5.3),
-    CPU("Intel", "Core i5-13600K", 312.99, 14, 28, 3.5, 5.1),
-    CPU("AMD", "Ryzen 7 7700X", 349, 8, 16, 4.5, 5.4),
+    CPU("Intel", "Core i9-11900k", 399, 8, 16, 3.5, 5.3),
+    CPU("Amd", "Ryzen 9 5950x", 299, 16, 32, 3.4, 4.9),
+    CPU("Intel", "Core i7-11700k", 239, 8, 16, 3.6, 5.0),
+    CPU("Amd", "Ryzen 7 5800x", 200, 8, 16, 3.8, 4.7),
+    CPU("Intel", "Core i5-11600k", 209, 6, 12, 3.9, 4.9),
+    CPU("Amd", "Ryzen 7 7800X3d", 441, 8, 16, 4.2, 5),
+    CPU("Intel", "Core i9-13900k", 409.99, 24, 48, 3, 5.8),
+    CPU("Amd", "Ryzen 5 7600x", 199.99, 6, 12, 4.7, 5.3),
+    CPU("Intel", "Core i5-13600k", 312.99, 14, 28, 3.5, 5.1),
+    CPU("Amd", "Ryzen 7 7700x", 349, 8, 16, 4.5, 5.4),
 ]
 
 cpu_collers_list = [
     CPUColler("Thermaltake", "A1964", 32.95, 5500, 36),
     CPUColler("Titan", "TTC-NK54TZ", 42.99, 3500, 30.6),
-    CPUColler("AMD", "Wraith Prism", 72.83, 2800, 42),
+    CPUColler("Amd", "Wraith Prism", 72.83, 2800, 42),
     CPUColler("Cooler Master", "Hyper T2", 35.99, 2800, 35),
     CPUColler("Thermaltake", "CL-P0187", 41.99, 4800, 36),
     CPUColler("Deepcool", "LT720", 139.99, 2250, 32.9),
     CPUColler("NZXT", "Kraken X73", 159.99, 2000, 36),
     CPUColler("Deepcool", "AK620 ZERO DARK", 69.98, 1850, 28),
-    CPUColler("NZXT", "Kraken 240", 139.98, 1800, 30.6),
+    CPUColler("Nzxt", "Kraken 240", 139.98, 1800, 30.6),
     CPUColler("Deepcool", "AK620", 63.99, 1850, 28),
 ]
 
 motherboards_list = [
-    Motherboard("MSI", "MAG B550 TOMAHAWK", 169.99, "AM4", "ATX", 128),
-    Motherboard("MSI", "B550-A PRO", 139.66, "AM4", "ATX", 128),
-    Motherboard("MSI", "B550M PRO-VDH WIFI", 119.99, "AM4", "Micro ATX", 128),
+    Motherboard("Msi", "MAG B550 TOMAHAWK", 169.99, "AM4", "ATX", 128),
+    Motherboard("Msi", "B550-A PRO", 139.66, "AM4", "ATX", 128),
+    Motherboard("Msi", "B550M PRO-VDH WIFI", 119.99, "AM4", "Micro ATX", 128),
     Motherboard("Gigabyte", "Z790 AORUS ELITE AX",
                 249.99, "LGA1700", "ATX", 128),
     Motherboard("Asus", "Prime B450M-A II", 79.98, "AM4", "Micro ATX", 128),
     Motherboard("Gigabyte", "B650 AORUS ELITE AX", 219, "AM5", "ATX", 128),
-    Motherboard("MSI", "MAG B660 TOMAHAWK WIFI",
+    Motherboard("Msi", "MAG B660 TOMAHAWK WIFI",
                 189.99, "LGA1700", "ATX", 128),
     Motherboard("Asus", "ROG STRIX B550-A GAMING", 169.99, "AM4", "ATX", 128),
-    Motherboard("MSI", "MAG B650 TOMAHAWK WIFI", 219.99, "AM5", "ATX", 128),
-    Motherboard("MSI", "MAG Z790 TOMAHAWK WIFI",
+    Motherboard("Msi", "MAG B650 TOMAHAWK WIFI", 219.99, "AM5", "ATX", 128),
+    Motherboard("Msi", "MAG Z790 TOMAHAWK WIFI",
                 259.99, "LGA1700", "ATX",	192),
 
 ]
@@ -76,7 +76,7 @@ storages_list = [
 ]
 
 video_cards_list = [
-    VideoCard("XFX", "Speedster MERC 310 Black Edition",
+    VideoCard("Xfx", "Speedster MERC 310 Black Edition",
               979.99, "Radeon RX 7900 XTX", 24, 2300, 2615),
     VideoCard("Gigabyte", "WINDFORCE OC", 599.99,
               "GeForce RTX 4070", 12, 1920, 2490),
@@ -84,26 +84,26 @@ video_cards_list = [
               "GeForce RTX 4090", 24, 2235, 2640),
     VideoCard("ASRock", "Challenger D", 179.99,
               "Radeon RX 6600", 8, 1626, 1920),
-    VideoCard("XFX", "Speedster MERC 319", 629.99,
+    VideoCard("Xfx", "Speedster MERC 319", 629.99,
               "Radeon RX 6950 XT", 16, 2009, 2368),
-    VideoCard("XFX", "Speedster MERC 319 CORE", 529.99,
+    VideoCard("Xfx", "Speedster MERC 319 CORE", 529.99,
               "Radeon RX 6800 XT", 16, 1825, 2250),
     VideoCard("Asus", "TUF GAMING", 799.99,
               "GeForce RTX 4070 Ti", 12, 2310, 2640),
-    VideoCard("MSI", "Ventus OC", 284.99, "GeForce RTX 3060", 12, 1320, 1807),
+    VideoCard("Msi", "Ventus OC", 284.99, "GeForce RTX 3060", 12, 1320, 1807),
     VideoCard("Gigabyte", "EAGLE", 234.99, "Radeon RX 6600", 8, 1626, 2491),
-    VideoCard("MSI", "VENTUS X3 OC", 609, "GeForce RTX 4070", 12, 1920, 2491),
+    VideoCard("Msi", "VENTUS X3 OC", 609, "GeForce RTX 4070", 12, 1920, 2491),
 
 ]
 
 cases_list = [
     Case("Corsair", "4000D Airflow", 89.99,
          "ATX Mid Tower", "Black", "Tinted Tempered Glass"),
-    Case("NZXT", "H5 Flow", 94.99, "ATX Mid Tower", "Black", "Tempered Glass"),
+    Case("Nzxt", "H5 Flow", 94.99, "ATX Mid Tower", "Black", "Tempered Glass"),
     Case("Deepcool", "CC560", 67.98, "ATX Mid Tower", "Black", "Tempered Glass"),
     Case("Lian Li", "O11 Dynamic EVO", 152.99,
          "ATX Mid Tower", "White", "Tempered Glass"),
-    Case("NZXT", "H9 Flow", 154.99, "ATX Mid Tower",
+    Case("Nzxt", "H9 Flow", 154.99, "ATX Mid Tower",
          "Gray", "Tinted Tempered Glass"),
     Case("Corsair", "iCUE 4000X RGB", 79.98,
          "ATX Mid Tower", "Black", "Tempered Glass"),

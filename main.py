@@ -1,6 +1,5 @@
 import logging
 from typing import List
-from utilities.crud_operations import read_cpu, update_cpu, delete_cpu
 from utilities.database import cpus_list, cpu_collers_list, motherboards_list, memories_list, storages_list, video_cards_list, cases_list, power_supplies_list
 from utilities.pc_parts import CPU, CPUColler, Motherboard, Memory, Storage, VideoCard, Case, PowerSupply
 
@@ -22,7 +21,6 @@ class PartPicker:
             return processors_list
         except Exception as e:
             logging.error(f"Error in get_processors_by_brand: {str(e)}")
-            return e
 
     def get_cpus_by_cores(self, core_count: int) -> List[CPU]:
         try:
@@ -34,7 +32,6 @@ class PartPicker:
             return processors_list
         except Exception as e:
             logging.error(f"Error in get_cpus_by_cores: {str(e)}")
-            return e
 
     def get_cpus_by_price(self, price: float) -> List[CPU]:
         try:
@@ -46,67 +43,108 @@ class PartPicker:
             return processors_list
         except Exception as e:
             logging.error(f"Error in get_cpus_by_price: {str(e)}")
-            return e
 
-    # def read_cpu(self, brand: str, model: str):
-    #     for cpu in self._cpus:
-    #         if cpu.get_brand() == brand and cpu.get_model() == model:
-    #             return cpu
-    #     return None
+    def read_parts(self, parts_list, parts_brand: str, parts_model: str):
+        for parts in parts_list:
+            if parts._brand == parts_brand and parts._model == parts_model:
+                return parts
+        return None
+
+    def delete_parts(self, parts_list, parts_brand: str, parts_model: str):
+        for part in parts_list:
+            if part.get_brand() == parts_brand and part.get_model() == parts_model:
+                parts_list.remove(part)
+                return True
+        return False
+
+    def update_parts(self, parts_list, parts_brand: str, parts_model: str, part_price: float):
+        for part in parts_list:
+            if part.get_brand() == parts_brand and part.get_model() == parts_model:
+                part.set_price(part_price)
+                return True
+        return False
 
 
-part_picker = PartPicker(cpus_list)
-print("\nIntel CPUs\n")
-intel_processors = part_picker.get_processors_by_brand("Intel")
-for cpu in intel_processors:
-    print(f"{cpu.get_brand()} {cpu.get_model()} - Price: {cpu.get_price()}€")
+def main():
+    part_picker = PartPicker(cpus_list)
 
-print("\nAMD CPUs\n")
-amd_processors = part_picker.get_processors_by_brand("AMD")
-for cpu in amd_processors:
-    print(f"{cpu.get_brand()} {cpu.get_model()} - Price: {cpu.get_price()}€")
+    while True:
+        print("Choose an operation:")
+        print("1. View all CPUs")
+        print("2. Get processors by brand")
+        print("3. Get CPUs by core count")
+        print("4. Get CPUs by price [=>]")
+        print("5. Update CPU price")
+        print("6. Delete CPU by model")
+        print("0. Exit")
 
-print("\nCPUs by core count\n")
-cpus_with_cores = part_picker.get_cpus_by_cores(8)
-for cpu in cpus_with_cores:
-    print(f"{cpu.get_brand()} {cpu.get_model()} - Price: {cpu.get_price()}€ - Cores: {cpu.get_core_count()}")
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            print("\nAll CPUs\n")
+            for cpu in part_picker._cpus:
+                print(
+                    f"{cpu.get_brand()} {cpu.get_model()} - Price: {cpu.get_price()}€")
 
-print("\nCPUs by price[lower or equal]\n")
-cpus_by_price = part_picker.get_cpus_by_price(250)
-for cpu in cpus_by_price:
-    print(f"{cpu.get_brand()} {cpu.get_model()} - Price: {cpu.get_price()}€")
+        elif choice == "2":
+            brand = input("Enter the brand: ").capitalize()
+            print(brand)
+            processors = part_picker.get_processors_by_brand(brand)
+            if not processors:
+                print(f"No CPUs found for brand {brand}.")
+            else:
+                print(f"\n{brand} CPUs\n")
+                for cpu in processors:
+                    print(
+                        f"{cpu.get_brand()} {cpu.get_model()} - Price: {cpu.get_price()}€")
 
-print("Crud Operations: READ")
-found_cpu = read_cpu(part_picker._cpus, "AMD", "Ryzen 9 5950X")
-if found_cpu:
-    print("Found CPU:", found_cpu._model)
-else:
-    print("CPU not found.")
+        elif choice == "3":
+            try:
+                core_count = int(input("Enter the core count: "))
+                cpus_with_cores = part_picker.get_cpus_by_cores(core_count)
+                print("\nCPUs by core count\n")
+                for cpu in cpus_with_cores:
+                    print(
+                        f"{cpu.get_brand()} {cpu.get_model()} - Price: {cpu.get_price()}€ - Cores: {cpu.get_core_count()}")
+            except ValueError:
+                print("Invalid input. Core count must be an integer.")
 
-print("\nCrud Operations: UPDATE")
-update_price = update_cpu(part_picker._cpus, "AMD", "Ryzen 9 5950X", 110.99)
-if update_price:
-    print("CPU price updated successfully.")
-else:
-    print("CPU not found, update failed.")
+        elif choice == "4":
+            try:
+                price = float(input("Enter the maximum price: "))
+                cpus_by_price = part_picker.get_cpus_by_price(price)
+                print("\nCPUs by price [lower or equal]\n")
+                for cpu in cpus_by_price:
+                    print(
+                        f"{cpu.get_brand()} {cpu.get_model()} - Price: {cpu.get_price()}€")
+            except ValueError:
+                print("Invalid input. Price must be a number.")
 
-print("\nCrud Operations: Check if price changed")
-cpu = read_cpu(part_picker._cpus, "AMD", "Ryzen 9 5950X")
-if cpu:
-    print("Updated CPU Price:", cpu.price)
-else:
-    print("CPU not found.")
+        elif choice == "5":
+            brand = input("Enter the brand: ").capitalize()
+            model = input("Enter the model: ").capitalize()
+            try:
+                new_price = float(input("Enter the new price: "))
+                if part_picker.update_parts(part_picker._cpus, brand, model, new_price):
+                    print("CPU price updated successfully.")
+                else:
+                    print("CPU not found, update failed.")
+            except ValueError:
+                print("Invalid input. Price must be a number.")
 
-print("\nCrud Operations: DELETE")
-delete = delete_cpu(part_picker._cpus, "AMD", "Ryzen 9 5950X")
-if delete:
-    print("CPU deleted successfully.")
-else:
-    print("CPU not found, delete failed.")
+        elif choice == "6":
+            brand = input("Enter the brand: ").capitalize()
+            model = input("Enter the model: ").capitalize()
+            if part_picker.delete_parts(part_picker._cpus, brand, model):
+                print("CPU deleted successfully.")
+            else:
+                print("CPU not found, delete failed.")
 
-print("\nCrud Operations: Check deleted item.")
-check_deleted = read_cpu(part_picker._cpus, "AMD", "Ryzen 9 5950X")
-if check_deleted:
-    print("Found CPU:", found_cpu._model)
-else:
-    print("CPU not found.")
+        elif choice == "0":
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+
+if __name__ == "__main__":
+    main()

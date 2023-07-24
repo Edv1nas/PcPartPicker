@@ -13,6 +13,9 @@ class PCParts:
     def get_price(self) -> float:
         return self._price
 
+    def set_price(self, new_price):
+        self._price = new_price
+
 
 class CPU(PCParts):
     def __init__(self, brand: str, model: str, price: float, core_count: int, threads: int, base_clock: float, max_boost_clock: float):
