@@ -20,10 +20,10 @@ class PCParts:
 class CPU(PCParts):
     def __init__(self, brand: str, model: str, price: float, core_count: int, threads: int, base_clock: float, max_boost_clock: float):
         super().__init__(brand, model, price)
-        self._core_count = core_count
-        self._threads = threads
-        self._base_clock = base_clock
-        self._max_boost_clock = max_boost_clock
+        self.core_count = core_count
+        self.threads = threads
+        self.base_clock = base_clock
+        self.max_boost_clock = max_boost_clock
 
     def get_core_count(self) -> int:
         return self._core_count

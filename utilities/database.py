@@ -1,7 +1,7 @@
 from utilities.pc_parts import CPU, CPUColler, Motherboard, Memory, Storage, VideoCard, Case, PowerSupply
 
 
-cpus_list = [
+cpus_data = [
     CPU("Intel", "Core i9-11900k", 399, 8, 16, 3.5, 5.3),
     CPU("Amd", "Ryzen 9 5950x", 299, 16, 32, 3.4, 4.9),
     CPU("Intel", "Core i7-11700k", 239, 8, 16, 3.6, 5.0),
@@ -14,7 +14,7 @@ cpus_list = [
     CPU("Amd", "Ryzen 7 7700x", 349, 8, 16, 4.5, 5.4),
 ]
 
-cpu_collers_list = [
+cpu_collers_data = [
     CPUColler("Thermaltake", "A1964", 32.95, 5500, 36),
     CPUColler("Titan", "TTC-NK54TZ", 42.99, 3500, 30.6),
     CPUColler("Amd", "Wraith Prism", 72.83, 2800, 42),
@@ -27,7 +27,7 @@ cpu_collers_list = [
     CPUColler("Deepcool", "AK620", 63.99, 1850, 28),
 ]
 
-motherboards_list = [
+motherboards_data = [
     Motherboard("Msi", "MAG B550 TOMAHAWK", 169.99, "AM4", "ATX", 128),
     Motherboard("Msi", "B550-A PRO", 139.66, "AM4", "ATX", 128),
     Motherboard("Msi", "B550M PRO-VDH WIFI", 119.99, "AM4", "Micro ATX", 128),
@@ -44,7 +44,7 @@ motherboards_list = [
 
 ]
 
-memories_list = [
+memories_data = [
     Memory("Corsair", "Vengeance LPX", 39.99, 16, "DDR4", 3200),
     Memory("Corsair", "Vengeance RGB Pro", 99.99, 32, "DDR4", 3600),
     Memory("Corsair", "Vengeance LPX", 69.98, 32, "DDR4", 3600),
@@ -58,7 +58,7 @@ memories_list = [
 
 ]
 
-storages_list = [
+storages_data = [
     Storage("Samsung", "980 Pro", 119.99, "2TB", "SSD", "M.2 PCIe 4.0 X4"),
     Storage("Samsung", "970 Evo Plus", 49.99, "1TB", "SSD", "M.2 PCIe 3.0 X4"),
     Storage("Samsung", "980 Pro", 69.98, "1TB", "SSD", "M.2 PCIe 4.0 X4"),
@@ -75,7 +75,7 @@ storages_list = [
 
 ]
 
-video_cards_list = [
+video_cards_data = [
     VideoCard("Xfx", "Speedster MERC 310 Black Edition",
               979.99, "Radeon RX 7900 XTX", 24, 2300, 2615),
     VideoCard("Gigabyte", "WINDFORCE OC", 599.99,
@@ -96,7 +96,7 @@ video_cards_list = [
 
 ]
 
-cases_list = [
+cases_data = [
     Case("Corsair", "4000D Airflow", 89.99,
          "ATX Mid Tower", "Black", "Tinted Tempered Glass"),
     Case("Nzxt", "H5 Flow", 94.99, "ATX Mid Tower", "Black", "Tempered Glass"),
@@ -118,7 +118,7 @@ cases_list = [
 
 ]
 
-power_supplies_list = [
+power_supplies_data = [
     PowerSupply("Corsair", "RM750e", 99.99, "ATX", "80+ Gold", 750, "Full"),
     PowerSupply("Corsair", "RM850x", 129.99, "ATX", "80+ Gold", 850, "Full"),
     PowerSupply("Corsair", " RM1000x", 169.99,
@@ -134,3 +134,15 @@ power_supplies_list = [
     PowerSupply("Corsair", "RM1000e", 163.27, "ATX", "80+ Gold", 1000, "Full"),
 
 ]
+
+parts_dict = {
+    "cpu": cpus_data,
+    "cpu_coller": cpu_collers_data,
+    "motherboard": motherboards_data,
+    "ram": memories_data,
+    "storage": storages_data,
+    "gpu": video_cards_data,
+    "case": cases_data,
+    "psu": power_supplies_data,
+
+}
