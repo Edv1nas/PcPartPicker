@@ -26,16 +26,16 @@ class CPU(PCParts):
         self.max_boost_clock = max_boost_clock
 
     def get_core_count(self) -> int:
-        return self._core_count
+        return self.core_count
 
     def get_threads(self) -> int:
-        return self._threads
+        return self.threads
 
     def get_base_clock(self) -> float:
-        return self._base_clock
+        return self.base_clock
 
     def get_max_boost_clock(self) -> float:
-        return self._max_boost_clock
+        return self.max_boost_clock
 
 
 class CPUColler(PCParts):

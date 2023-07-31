@@ -1,4 +1,4 @@
-from utilities.pc_parts import CPU, CPUColler, Motherboard, Memory, Storage, VideoCard, Case, PowerSupply
+from parts import CPU, CPUColler, Motherboard, Memory, Storage, VideoCard, Case, PowerSupply
 
 
 cpus_data = [
