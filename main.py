@@ -31,28 +31,29 @@ class PartPicker:
         except Exception as e:
             logging.error(f"Error in get_cpus_by_price: {str(e)}")
 
-    def read_parts(self, parts_brand: str, parts_model: str):
+    def read_parts(self, parts: list, parts_brand: str, parts_model: str) -> List:
         try:
-            for part in self.parts:
+            matching_parts = []
+            for part in parts:
                 if part.get_brand() == parts_brand and part.get_model() == parts_model:
-                    return part
-            return None
+                    matching_parts.append(part)
+            return matching_parts
         except Exception as e:
             logging.exception(f"Error in read_parts: {e}")
 
-    def delete_parts(self, parts_brand: str, parts_model: str):
+    def delete_parts(self, parts: list, parts_brand: str, parts_model: str):
         try:
-            for part in self.parts:
+            for part in parts:
                 if part.get_brand() == parts_brand and part.get_model() == parts_model:
-                    self.parts.remove(part)
+                    parts.remove(part)
                     return True
             return False
         except Exception as e:
             logging.exception(f"Error in delete_parts: {e}")
 
-    def update_parts(self, parts_brand: str, parts_model: str, part_price: float):
+    def update_price(self, parts: list, parts_brand: str, parts_model: str, part_price: float):
         try:
-            for part in self.parts:
+            for part in parts:
                 if part.get_brand() == parts_brand and part.get_model() == parts_model:
                     part.set_price(part_price)
                     return True
@@ -60,10 +61,17 @@ class PartPicker:
         except Exception as e:
             logging.exception(f"Error in update_parts: {e}")
 
-    def view_all_parts(self, parts) -> List:
-        for part in parts:
-            print(
-                f"{part.get_brand()} {part.get_model()} - Price: {part.get_price()}€")
+    def view_all_parts(self, parts) -> List[str]:
+        try:
+            result = []
+            for part in parts:
+                part_info = f"{part.get_brand()} {part.get_model()} - Price: {part.get_price()}€"
+                result.append(part_info)
+                print(part_info)
+                print(result)
+            return result
+        except Exception as e:
+            logging.exception(f"Error in view_all_parts: {e}")
 
     def get_parts_by_specification(self, parts: List, specification_name: str, specification_value) -> List:
         try:
